@@ -27,10 +27,10 @@ jobs:
     - name: Build with PyInstaller
       run: pyinstaller --onefile snake.py
 
-      - name: Upload artifact
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./dist/snake.exe
-          asset_name: snake.exe
-          asset_content_type: application/vnd.microsoft.portable-executable
+    - name: Upload artifact
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ./dist/snake.exe
+        asset_name: snake.exe
+        asset_content_type: application/vnd.microsoft.portable-executable
