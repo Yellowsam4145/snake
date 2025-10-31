@@ -28,9 +28,7 @@ jobs:
 
     - name: Build with Nuitka
       run: |
-        python -m nuitka --standalone --onefile --output-filename=snake snake.py
-        # Use --follow-imports if your project has multiple files that need explicit inclusion if not automatically detected
-        # e.g., python -m nuitka --standalone --onefile --output-filename=my_app my_main_script.py --follow-imports
+        python -m nuitka --standalone --onefile --output-filename=snake --assume-yes-downloads snake.py
       
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
