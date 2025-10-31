@@ -23,7 +23,7 @@ jobs:
 
     - name: Build executable
       run: |
-        pyinstaller --snake.py
+        pyinstaller onefile --snake.py
 
     - name: Create Release
       id: create_release
