@@ -33,4 +33,3 @@ jobs:
           asset_path: ./dist/snake.exe
           asset_name: snake.exe
           asset_content_type: application/vnd.microsoft.portable-executable
-        asset_content_type: application/vnd.microsoft.portable-executable
