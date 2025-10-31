@@ -24,7 +24,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install nuitka # Install Nuitka if not using the Nuitka-Action directly
         # Install your project's dependencies
-        if (exist requirements.txt) {pip install -r requirements.txt}
+        if (Test-Path requirements.txt) {pip install -r requirements.txt}
 
     - name: Build with Nuitka
       run: |
