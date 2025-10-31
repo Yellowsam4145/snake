@@ -28,7 +28,7 @@ jobs:
 
     - name: Build with Nuitka
       run: |
-        python -m nuitka --standalone --onefile --output-filename=snake --assume-yes-downloads snake.py
+        python -m nuitka --standalone --onefile --output-filename=snake --assume-yes-for-downloads snake.py
       
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
