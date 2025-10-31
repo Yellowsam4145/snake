@@ -1,0 +1,40 @@
+name: Build and Release Executables
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.14' # Specify your Python version
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install nuitka # Install Nuitka if not using the Nuitka-Action directly
+        # Install your project's dependencies
+        if exist requirements.txt pip install -r requirements.txt
+
+    - name: Build with Nuitka
+      run: |
+        python -m nuitka --standalone --onefile --output-filename=my_app my_main_script.py
+        # Use --follow-imports if your project has multiple files that need explicit inclusion if not automatically detected
+        # e.g., python -m nuitka --standalone --onefile --output-filename=my_app my_main_script.py --follow-imports
+      
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: snake-windows
+        path: |
+          snake.exe # The resulting single executable file
