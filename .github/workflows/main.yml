@@ -35,4 +35,4 @@ jobs:
       with:
         name: snake-windows
         path: |
-          snake.exe # The resulting single executable file
+          D:\a\snake\snake\snake.exe # The resulting single executable file
