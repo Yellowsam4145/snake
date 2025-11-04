@@ -28,11 +28,11 @@ jobs:
 
     - name: Build with Nuitka
       run: |
-        python -m nuitka --standalone --onefile --output-filename=snake --assume-yes-for-downloads snake.py
+        python -m nuitka --standalone --onefile --output-filename=snake.exe --assume-yes-for-downloads snake.py
       
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: snake-windows
         path: |
-          D:\a\snake\snake\snake.exe # The resulting single executable file
+          snake.exe # The resulting single executable file
