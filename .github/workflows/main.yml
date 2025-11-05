@@ -30,11 +30,12 @@ jobs:
       run: |
         python -m nuitka --standalone --onefile --output-filename=snake.exe --assume-yes-for-downloads snake.py
       
-Run actions/upload-artifact@v4
-  with:
-    name: snake-windows
-    path: D:\a\snake\snake\snake.exe
-    if-no-files-found: warn
-    compression-level: 6
-    overwrite: false
-    include-hidden-files: false
+ - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: snake-windows
+        path: D:\a\snake\snake\snake.exe  # Remove the comment from this line
+        if-no-files-found: warn
+        compression-level: 6
+        overwrite: false
+        include-hidden-files: false
