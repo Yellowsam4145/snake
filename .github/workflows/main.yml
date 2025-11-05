@@ -34,7 +34,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: snake-windows
-        path: D:\a\snake\snake\snake.exe  # Remove the comment from this line
+        path: D:\a\snake\snake\snake.exe
         if-no-files-found: warn
         compression-level: 6
         overwrite: false
