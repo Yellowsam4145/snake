@@ -1,8 +1,16 @@
-import os
 import random
 from time import sleep as wait
-
+import sys
 import keyboard  # Requires the `keyboard` library
+
+def clear_lines_above(n):
+    """Clears the n lines immediately above the current cursor position."""
+    for _ in range(n):
+        # Move cursor up one line
+        sys.stdout.write('\033[1A')
+        # Erase the current line (from cursor to end)
+        sys.stdout.write('\033[2K')
+        sys.stdout.flush()
 
 def waitloop(delay, direction):
     for currenttimes in range(delay):
@@ -25,8 +33,9 @@ class Screen8x8:
         self.screen = [['' for _ in range(8)] for _ in range(8)]
 
     def display(self):
+        # Erase the previous output for next frame
+        clear_lines_above(10)
         # Print the screen row by row
-        os.system('cls' if os.name == 'nt' else 'clear')  # Clear console for better visibility
         print('-' * 19)  # Separator for clarity
         for row in self.screen:
             print('|', ' '.join(row), '|')
@@ -51,6 +60,7 @@ lastsnake = snake.copy()
 direction = [1, 0]  # Initial direction to the right
 
 input("Press Enter to start...")  # Initial input before starting the game
+clear_lines_above(2)  # Clear the input prompt
 
 if __name__ == "__main__":
     screen = Screen8x8()
